@@ -50,29 +50,29 @@ function insertTimeline(screenName) {
         
         twitterSidebar = container[0].parentNode;
     }
-  }
 
-  sidebar.classList.remove('sb-loading');
+    sidebar.classList.remove('sb-loading');
 
-  const iframe_width = twitterSidebar.style.width;
-  const iframe_height = twitterSidebar.style.height;
+    const iframe_width = twitterSidebar.style.width;
+    const iframe_height = twitterSidebar.style.height;
 
-  try {
-    twttr.widgets.createTimeline(
-      {
-        sourceType: 'profile',
-        screenName
-      },
-      twitterSidebar,
-      {
-        width: iframe_width,
-        height: iframe_height,
-        chrome: 'noborders'
-      }
-    );
-  }
-  catch (err) {
-    console.error(err.msg || err.message);
+    try {
+      twttr.widgets.createTimeline(
+        {
+          sourceType: 'profile',
+          screenName
+        },
+        twitterSidebar,
+        {
+          width: iframe_width,
+          height: iframe_height,
+          chrome: 'noborders'
+        }
+      );
+    }
+    catch (err) {
+      console.error(err.msg || err.message);
+    }
   }
 }
 
