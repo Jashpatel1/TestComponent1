@@ -40,7 +40,7 @@ function insertTimeline(screenName) {
   let twitterSidebar = document.getElementById(config.sidebar_container);
   const sidebar = document.getElementById('sidebar');
 
-  if(window.location.href === 'https://staging-discuss.layer5.io') {
+  if(window.location.href === 'https://staging-discuss.layer5.io/') {
     if (!twitterSidebar) {
         const container = document.getElementsByClassName(config.sidebar_mainpage_container);
         if (!twitterSidebar && !container.length) {
