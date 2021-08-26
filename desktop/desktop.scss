@@ -1,12 +1,12 @@
 #sidebar {
   flex: 0 1 40%;
-  padding: 0 10px;
   @media (max-width: 900px) {
     display: none;
   }
 }
 
 #twitter-sidebar {
+  margin-top: 20px;
   width: 100%;
   height: 600px;
   overflow-y: auto;
