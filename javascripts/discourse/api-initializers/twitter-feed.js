@@ -40,14 +40,16 @@ function insertTimeline(screenName) {
   let twitterSidebar = document.getElementById(config.sidebar_container);
   const sidebar = document.getElementById('sidebar');
 
-  if (!twitterSidebar) {
-      const container = document.getElementsByClassName(config.sidebar_mainpage_container);
-      if (!twitterSidebar && !container.length) {
-          console.warn('Twitter timeline not loaded');
-          return;
-      }
-      
-      twitterSidebar = container[0].parentNode;
+  if(window.location.href === 'https://staging-discuss.layer5.io') {
+    if (!twitterSidebar) {
+        const container = document.getElementsByClassName(config.sidebar_mainpage_container);
+        if (!twitterSidebar && !container.length) {
+            console.warn('Twitter timeline not loaded');
+            return;
+        }
+        
+        twitterSidebar = container[0].parentNode;
+    }
   }
 
   sidebar.classList.remove('sb-loading');
