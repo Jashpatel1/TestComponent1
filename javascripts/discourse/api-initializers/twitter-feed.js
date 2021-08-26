@@ -40,39 +40,38 @@ function insertTimeline(screenName) {
   let twitterSidebar = document.getElementById(config.sidebar_container);
   const sidebar = document.getElementById('sidebar');
 
-  if(window.location.href === 'https://staging-discuss.layer5.io/') {
-    if (!twitterSidebar) {
-        const container = document.getElementsByClassName(config.sidebar_mainpage_container);
-        if (!twitterSidebar && !container.length) {
-            console.warn('Twitter timeline not loaded');
-            return;
-        }
-        
-        twitterSidebar = container[0].parentNode;
-    }
+  
+  if (!twitterSidebar) {
+      const container = document.getElementsByClassName(config.sidebar_mainpage_container);
+      if (!twitterSidebar && !container.length) {
+          console.warn('Twitter timeline not loaded');
+          return;
+      }
+      
+      twitterSidebar = container[0].parentNode;
+  }
 
-    sidebar.classList.remove('sb-loading');
+  sidebar.classList.remove('sb-loading');
 
-    const iframe_width = twitterSidebar.style.width;
-    const iframe_height = twitterSidebar.style.height;
-
-    try {
-      twttr.widgets.createTimeline(
-        {
-          sourceType: 'profile',
-          screenName
-        },
-        twitterSidebar,
-        {
-          width: iframe_width,
-          height: iframe_height,
-          chrome: 'noborders'
-        }
-      );
-    }
-    catch (err) {
-      console.error(err.msg || err.message);
-    }
+  const iframe_width = (window.location.href === 'https://staging-discuss.layer5.io/') ? twitterSidebar.style.width : 0;
+  const iframe_height = twitterSidebar.style.height;
+  
+  try {
+    twttr.widgets.createTimeline(
+      {
+        sourceType: 'profile',
+        screenName
+      },
+      twitterSidebar,
+      {
+        width: iframe_width,
+        height: iframe_height,
+        chrome: 'noborders'
+      }
+    );
+  }
+  catch (err) {
+    console.error(err.msg || err.message);
   }
 }
 
